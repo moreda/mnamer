@@ -1,7 +1,7 @@
 from datetime import date
 from os import path
 from pathlib import Path, PurePath
-from shutil import move
+from shutil import move, copy2
 from typing import Dict, List, Optional, Set, Union
 
 from guessit import guessit
@@ -239,11 +239,11 @@ class Target:
                 break
         return response
 
-    def relocate(self) -> None:
+    def relocate(self, no_remove: bool) -> None:
         """Performs the action of renaming and/or moving a file."""
         destination_path = Path(self.destination).resolve()
         destination_path.parent.mkdir(parents=True, exist_ok=True)
         try:
-            move(self.source, destination_path)
+            (copy2 if no_remove else move)(self.source, destination_path)
         except OSError:  # pragma: no cover
             raise MnamerException

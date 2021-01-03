@@ -186,7 +186,7 @@ class Cli(Frontend):
             self.success_count += 1
             return
         try:
-            target.relocate()
+            target.relocate(self.settings.no_remove)
         except MnamerException:
             tty.msg("FAILED!", MessageType.ERROR)
         else:

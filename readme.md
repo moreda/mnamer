@@ -82,6 +82,7 @@ DIRECTIVES:
   --id-tvdb=<ID>: specify a TVDb series id override
   --id-tvmaze=<ID>: specify a TvMaze series id override
   --no-cache: disable request cache
+  --no-remove: keep original files
   --media={movie,episode}: override media detection
   --test: mocks the renaming and moving of files
 ```

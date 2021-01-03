@@ -310,6 +310,16 @@ class SettingStore:
             help="--no-cache: disable request cache",
         )(),
     )
+    no_remove: bool = dataclasses.field(
+        default=False,
+        metadata=SettingSpec(
+            action="store_true",
+            dest="no_remove",
+            flags=["--no_remove", "--no-remove", "--noremove"],
+            group=SettingType.DIRECTIVE,
+            help="--no-remove: keep original files",
+        )(),
+    )
     media: Optional[Union[MediaType, str]] = dataclasses.field(
         default=None,
         metadata=SettingSpec(
